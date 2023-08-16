@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.box-rating,
+.box-thanks {
+    width: 90%;
+
+}
+
+.box-rating {
+    padding-top: 2rem;
+}
+
+.box-thanks {
+    padding-top: 3rem;
+}
+
+.selcted {
+    font-size: 1.2rem;
+}
