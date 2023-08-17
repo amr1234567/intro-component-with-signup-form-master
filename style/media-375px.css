@@ -1,22 +1,49 @@
 .container {
     width: 100%;
     height: 100%;
+    flex-direction: column;
+    position: static;
+    transform: none;
+    justify-content: flex-start;
 }
 
-.box-rating,
-.box-thanks {
-    width: 90%;
-
+.left-side {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-.box-rating {
-    padding-top: 2rem;
+.left-side h1 {
+    font-size: 2.3rem;
 }
 
-.box-thanks {
-    padding-top: 3rem;
+.left-side p {
+    font-size: 1.3rem;
 }
 
-.selcted {
-    font-size: 1.2rem;
+.right-side {
+    width: 100%;
+    gap: 2rem;
+}
+
+.free-trail {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem 5rem;
+}
+
+.free-trail span {
+    font-size: 1rem;
+    text-align: center;
+}
+
+form{
+    padding: 2rem;
+}
+form button{
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
 }
