@@ -15,17 +15,6 @@
 
   <title>Frontend Mentor | Intro component with sign up form</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 <body>
@@ -39,11 +28,28 @@
       <div class="free-trail">
         <span>Try it free 7 days </span>&nbsp; then $20/mo. thereafter
       </div>
-      <form action="">
-        <input type="text" name="First-name" id="First-name" placeholder="First Name">
-        <input type="text" name="last-name" id="last-name" placeholder="Last Name">
-        <input type="email" name="Email" id="Email" placeholder="Email Address">
-        <input type="password" name="Password" id="Password" placeholder="Password">
+      <form action="" onsubmit="return validate()">
+        <div class="input-field">
+          <input type="text" name="First name" id="First-name" placeholder="First Name">
+          <div class="disabled-mark">!</div>
+          <span></span>
+        </div>
+        <div class="input-field">
+          <input type="text" name="Last name" id="last-name" placeholder="Last Name">
+          <div class="disabled-mark">!</div>
+          <span></span>
+        </div>
+        <div class="input-field">
+          <input type="text" name="Email" id="Email" placeholder="Email Address">
+          <div class="disabled-mark">!</div>
+          <span></span>
+        </div>
+        <div class="input-field">
+          <input type="password" name="Password" id="Password" placeholder="Password">
+          <div class="disabled-mark">!</div>
+          <span></span>
+        </div>
+        
         <button>Claim your free trial</button>
         <p>By clicking the button, you are agreeing to our <a href="">Terms and Services</a></p>
       </form>
@@ -53,7 +59,7 @@
   <footer>
     <p class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="#">Amr Shalaby</a>.
+      Coded by <a href="https://www.frontendmentor.io/profile/amr1234567">Amr Shalaby</a>.
     </p>
   </footer>
   <script src="script/script.js"></script>
@@ -61,3 +67,23 @@
 </body>
 
 </html>
+
+
+<!-- 
+  <div class="input-field">
+          <input type="text" name="First-name" id="First-name" placeholder="First Name">
+
+        </div>
+        <div class="input-field">
+          <input type="text" name="last-name" id="last-name" placeholder="Last Name">
+
+        </div>
+        <div class="input-field">
+          <input type="email" name="Email" id="Email" placeholder="Email Address">
+
+        </div>
+        <div class="input-field">
+          <input type="password" name="Password" id="Password" placeholder="Password">
+
+        </div>
+ -->
