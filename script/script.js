@@ -1,48 +1,79 @@
 "use strict";
 
 let inputFields = document.querySelectorAll('.input-field input');
+let containersOfInputFields = document.querySelectorAll('.input-field');
 let marks = document.querySelectorAll('.input-field div')
-let spans = document.querySelectorAll('.input-field span');
 let mailformat = /\w+@\w+.\w+/;
 let confirm = true;
 
 function validate() {
+    let i =0;
     inputFields.forEach((ele, index) => {
         if (ele.value === '') {
-            spans[index].textContent = `${ele.getAttribute('name')} cannot be empty`;
+            if (!containersOfInputFields[index].children[2] && i<4) {
+                let spanEle = document.createElement('div');
+                spanEle.className = 'div-invalid-text';
+                let text = document.createTextNode(`${ele.getAttribute('name')} cannot be empty`)
+                spanEle.appendChild(text);
+                containersOfInputFields[index].appendChild(spanEle);
+                i++;
+            }
             ele.classList.add('input-invalid');
             marks[index].classList.replace('disabled-mark', 'mark');
             confirm = false;
         } else if (ele.getAttribute('name') === 'Email') {
             if (!ele.value.match(mailformat)) {
+                let spanEle = document.createElement('div');
+                spanEle.className = 'div-invalid-text';
+                let text = document.createTextNode(`Looks like this is not an ${ele.getAttribute('name')}`)
+                spanEle.appendChild(text);
+                containersOfInputFields[index].appendChild(spanEle);
                 marks[index].classList.replace('disabled-mark', 'mark');
                 ele.classList.add('input-invalid');
-                spans[index].textContent = `Looks like this is not an ${ele.getAttribute('name')}`;
                 confirm = false;
             } else {
                 ele.classList.remove('input-invalid');
-                spans[index].textContent = '';
+                document.querySelectorAll('.div-invalid-text').forEach((ele) => ele.remove());
+                marks.forEach((ele) => ele.classList.replace('mark', 'disabled-mark'));
                 confirm = true;
-                marks[index].classList.replace('mark', 'disabled-mark');
             }
         } else if (ele.getAttribute('name') === 'Password') {
             if (ele.value.length < 8) {
+                let spanEle = document.createElement('div');
+                spanEle.className = 'div-invalid-text';
+                let text = document.createTextNode(`The ${ele.getAttribute('name')} must be bigger than 8 chars`)
+                spanEle.appendChild(text);
+                containersOfInputFields[index].appendChild(spanEle);
                 marks[index].classList.replace('disabled-mark', 'mark');
                 ele.classList.add('input-invalid');
-                spans[index].textContent = `The ${ele.getAttribute('name')} must be bigger than 8 chars`;
                 confirm = false;
             } else {
                 ele.classList.remove('input-invalid');
-                spans[index].textContent = '';
+                document.querySelectorAll('.div-invalid-text').forEach((ele) => ele.remove());
+                marks.forEach((ele) => ele.classList.replace('mark', 'disabled-mark'));
                 confirm = true;
-                marks[index].classList.replace('mark', 'disabled-mark');
             }
         } else {
             ele.classList.remove('input-invalid');
-            spans[index].textContent = '';
+            document.querySelectorAll('.div-invalid-text').forEach((ele) => ele.remove());
+            marks.forEach((ele) => ele.classList.replace('mark', 'disabled-mark'));
             confirm = true;
-            marks[index].classList.replace('mark', 'disabled-mark');
         }
     });
     return confirm;
 }
+
+
+
+
+inputFields.forEach((ele, index) => {
+    ele.onfocus= () => {
+        marks[index].classList.replace('mark', 'disabled-mark');
+    };
+    ele.addEventListener('blur',()=>{
+        if (!ele.value) {
+            marks[index].classList.replace('disabled-mark','mark');
+        }
+    })
+});
+
